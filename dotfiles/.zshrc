@@ -24,8 +24,7 @@ function _update_vcs_info_msg() {
     psvar[1]="$vcs_info_msg_0_"
 }
 add-zsh-hook precmd _update_vcs_info_msg
-PROMPT="%~ (´・ω・｀) %v
-"
+PROMPT="%~ (´・ω・｀) %v"
 
 function zle-line-init zle-keymap-select {
     VIM_NORMAL="%K{208}%F{black} %k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208} %k%f"
