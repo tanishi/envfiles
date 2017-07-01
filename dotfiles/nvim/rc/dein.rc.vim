@@ -9,10 +9,10 @@ endif
 
 call dein#begin(s:path, expand("<sfile>"))
 
-call dein#load_toml("./dein.toml", {"lazy": 0})
-call dein#load_toml("./deinlazy.toml", {"lazy": 1})
+call dein#load_toml("~/.config/nvim/rc/dein.toml", {"lazy": 0})
+call dein#load_toml("~/.config/nvim/rc/dein_lazy.toml", {"lazy": 1})
 if has("nvim")
-  call dein#load_toml("./deineo.toml", {})
+  call dein#load_toml("~/.config/nvim/rc/deineo.toml", {})
 endif
 
 if dein#tap("deoplete.nvim") && has("nvim")

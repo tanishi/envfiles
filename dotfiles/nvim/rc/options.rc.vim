@@ -130,6 +130,8 @@ set helpheight=12
 set ttyfast
 set display=lastline
 
+autocmd BufNewFile,BufRead *.{ts,tsx} set filetype=typescript
+
 function! WidthPart(str, width) abort "{{{
   if a:width <= 0
     return ""
