@@ -8,8 +8,17 @@ hook_add = 'let g:go_fmt_command = "goimports"'
 [[plugins]]
 repo = 'othree/yajs.vim'
 on_ft = ['js', 'jsx']
+
 [[plugins]]
 repo = 'mxw/vim-jsx'
+on_ft = ['js', 'jsx']
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['js', 'jsx']
+
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
 on_ft = ['js', 'jsx']
 
 # ts
@@ -17,6 +26,10 @@ on_ft = ['js', 'jsx']
 repo = 'leafgarland/typescript-vim'
 on_ft = ['typescript']
 hook_add = 'let g:typescript_indent_disable = 0'
+
+[[plugins]]
+repo = 'ianks/vim-tsx'
+on_ft = ['typescript']
 
 # python
 [[plugins]]
@@ -29,3 +42,22 @@ hook_add = 'let g:jedi#force_py_version = 3'
 [[plugin]]
 repo = 'mattn/emmet-vim'
 of_ft = ['html', 'xml']
+
+[[plugins]]
+repo = 'othree/html5.vim'
+of_ft = ['html']
+
+# elm
+[[plugins]]
+repo = 'elmcast/elm-vim'
+on_ft = ['elm']
+
+# rust
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = ['rust']
+
+[[plugins]]
+repo = 'racer-rust/vim-racer'
+on_ft = ['rus']
+
