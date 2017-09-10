@@ -1,7 +1,3 @@
-if &compatible
-  set nocompatible
-endif
-
 function! s:source_rc(path, ...) abort "{{{
   let use_global = get(a:000, 0, !has('vim_starting'))
   let abspath = resolve(expand('~/.config/nvim/rc/' . a:path))
@@ -53,5 +49,4 @@ call s:source_rc('options.rc.vim')
 call s:source_rc('mappings.rc.vim')
 
 set secure
-
 
