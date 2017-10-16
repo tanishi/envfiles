@@ -1,48 +1,57 @@
-autoload -Uz colors && colors
-autoload -Uz promptinit && promptinit
-autoload -Uz compinit && compinit
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
-setopt histignorealldups sharehistory
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -v
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-setopt no_beep
-
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-
-function _update_vcs_info_msg() {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    psvar[1]="$vcs_info_msg_0_"
-}
-
-add-zsh-hook precmd _update_vcs_info_msg
-PROMPT="%~ (´・ω・｀) %v"
-
-function zle-line-init zle-keymap-select {
-    VIM_NORMAL="%K{208}%F{black} %k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208} %k%f"
-    VIM_INSERT="%K{075}%F{black} %k%f%K{075}%F{white} % INSERT %k%f%K{black}%F{075} %k%f"
-    RPS1="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
-    RPS2=$RPS1
-    zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-
-bindkey -M vicmd '?' history-incremental-search-backward
-bindkey -M viins 'jj' vi-cmd-mode
+# Customize to your needs...
 
 alias ls='ls -G'
 alias la='ls -a -G'
-alias l='ls'
 alias vim='nvim'
+alias gcc='gcc-5'
+alias g++='g++-5'
+alias sz='source ~/.zshrc'
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
 
 export XDG_CONFIG_HOME=$HOME/.config
-export EDITOR=nvim
 
+export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+export RBENV_ROOT="${HOME}/.rbenv"
+if [ -d "${RBENV_ROOT}" ]; then
+    export PATH="${RBENV_ROOT}/bin:${PATH}"
+    eval "$(rbenv init -)"
+fi
+
+export EDITOR='vim'
+export GOPATH=$HOME/Documents/go/
+export PATH=$PATH:$GOPATH/bin
+
+export PATH=$HOME/.cargo/bin:$PATH
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
+
+eval "$(direnv hook zsh)"
+
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+RPROMPT="%1(v|%F{green}%1v%f|)"
