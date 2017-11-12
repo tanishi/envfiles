@@ -1,11 +1,10 @@
 FROM alpine:edge
 MAINTAINER tanishi
 
-RUN apk --no-cache add \
+RUN apk --update --no-cache add \
     git \
     neovim \
     python3 \
     sudo \
     tmux \
     zsh \
-
