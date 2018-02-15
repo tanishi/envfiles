@@ -12,10 +12,6 @@ call dein#begin(s:path, expand("<sfile>"))
 call dein#load_toml("~/.config/nvim/rc/dein.toml", {"lazy": 0})
 call dein#load_toml("~/.config/nvim/rc/dein_lazy.toml", {"lazy": 1})
 
-if dein#tap("deoplete.nvim") && has("nvim")
-  call dein#disable("neocomplete.vim")
-endif
-
 call dein#end()
 call dein#save_state()
 

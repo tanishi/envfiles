@@ -1,17 +1,5 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-let g:deoplete#enable_at_startup = 1
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-'''
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-
-[[plugins]]
-repo = 'rcmdnk/vim-markdown'
-
-[[plugins]]
-repo = 'othree/es.next.syntax.vim'
+repo = 'Shougo/neosnippet-snippets'

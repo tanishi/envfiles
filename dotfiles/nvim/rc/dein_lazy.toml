@@ -1,3 +1,38 @@
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+  inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+'''
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_source = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
+on_i  = 1
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
+
 # golang
 [[plugins]]
 repo = 'fatih/vim-go'
