@@ -1,0 +1,9 @@
+export EDITOR=vim
+export XDG_CONFIG_HOME=$HOME/.config
+export PATH=/usr/local/bin:$PATH
+export GOPATH=$HOME/Documents/go/
+export PATH=$PATH:$GOPATH/bin
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
