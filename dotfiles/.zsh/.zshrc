@@ -24,10 +24,10 @@ autoload -U compinit
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-export RBENV_ROOT="${HOME}/.rbenv"
-if [ -d "${RBENV_ROOT}" ]; then
-    eval "$(rbenv init -)"
-    export PATH="${RBENV_ROOT}/bin:${PATH}"
+export RBENV_ROOT='${HOME}/.rbenv'
+if [ -d '${RBENV_ROOT}' ]; then
+    eval '$(rbenv init -)'
+    export PATH='${RBENV_ROOT}/bin:${PATH}'
 fi
 
 eval "$(direnv hook zsh)"
